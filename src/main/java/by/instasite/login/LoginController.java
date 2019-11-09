@@ -22,16 +22,16 @@ public class LoginController {
             return "login";
         } else return "mainpage";
     }
-
     @RequestMapping(value = "/register",method = RequestMethod.GET)
     public String Registration (Model model){
-        model.addAttribute("register", new LogIn());
+        model.addAttribute("login", new LogIn());
         return "register";
     }
     @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public String RegistrationSubmit (@ModelAttribute LogIn registration, Model model){
-        model.addAttribute("register", registration);
-        new Authorization().CreateNewUser(registration.getUsername(),registration.getPassword(),registration.getEmail(),registration.getCountry(),registration.getImageUrl());
-        return "mainpage";
+    public String RegistrationSubmit (@ModelAttribute LogIn register, Model model){
+        model.addAttribute("login", register);
+        if (new Authorization().CreateNewUser(register.getUsername(),register.getPassword(),register.getEmail(),register.getCountry(),register.getImageUrl())) {
+            return "mainpage";
+        } else return "login";
     }
 }

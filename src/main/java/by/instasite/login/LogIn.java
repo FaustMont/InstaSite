@@ -7,25 +7,15 @@ public class LogIn {
     private String password;
     private String email;
     private String country;
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public URL getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(URL imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     private URL imageUrl;
 
+    public String getCountry() { return country; }
+
+    public void setCountry(String country) { this.country = country; }
+
+    public URL getImageUrl() { return imageUrl; }
+
+    public void setImageUrl(URL imageUrl) { this.imageUrl = imageUrl;}
 
     public String getEmail() {
         return email;
@@ -34,7 +24,6 @@ public class LogIn {
     public void setEmail(String email) {
         this.email = email;
     }
-
 
     public String getUsername() {
         return username;
@@ -51,8 +40,6 @@ public class LogIn {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
 
 
 }
