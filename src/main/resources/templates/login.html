@@ -1,0 +1,18 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>
+		Authorization
+	</title>
+</head>
+<body>
+<h1>LogIn</h1>
+<form action="#" th:action="@{/login}" th:object="${login}" method="post">
+	<p>username: <input type="text" th:field="*{username}" /></p>
+	<p>password: <input type="password" th:field="*{password}" /></p>
+	<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+<form action="#" th:action="@{/register}" method="get">
+	<input type="submit" value="New user?" />
+</form>
+</body>
+</html>
