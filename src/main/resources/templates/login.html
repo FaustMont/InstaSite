@@ -6,6 +6,7 @@
 </head>
 <body>
 <h1>LogIn</h1>
+<p th:text="${error}" />
 <form action="#" th:action="@{/login}" th:object="${login}" method="post">
 	<p>username: <input type="text" th:field="*{username}" /></p>
 	<p>password: <input type="password" th:field="*{password}" /></p>
