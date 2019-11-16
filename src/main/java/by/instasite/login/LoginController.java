@@ -19,8 +19,9 @@ public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String LoginSubmit(@ModelAttribute User login, Model model) {
         model.addAttribute("login", login);
-        if (!new Authorization().CheckCredentials(login.getUsername(), login.getPassword())) {
-            model.addAttribute("error","Password or username is not correct");
+        String answer = new Authorization().CheckCredentials(login.getUsername(), login.getPassword());
+        if (!answer.equals("ok")){
+            model.addAttribute("error",answer);
             return "login";
         } else return "mainpage";
     }
