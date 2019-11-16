@@ -1,15 +1,18 @@
 package by.instasite.database.user;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
 import javax.sql.DataSource;
 
 
-public class UserTemplate {
+public class UserTemplate extends JdbcDaoSupport {
     private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
 
-    public void setDataSource(DataSource dataSource) {
+    @Autowired
+    public void setData(DataSource dataSource) {
         this.dataSource = dataSource;
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
@@ -23,4 +26,5 @@ public class UserTemplate {
         String SQL = "INSERT INTO users (username, password, email, country) VALUES (?,?,?,?)";
         jdbcTemplate.update(SQL, username, password, email, country);
     }
+
 }
