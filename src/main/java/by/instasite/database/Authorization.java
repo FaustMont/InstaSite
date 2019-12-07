@@ -7,17 +7,13 @@ import by.instasite.database.user.UserTemplate;
 public class Authorization {
 
 
-    public boolean CheckCredentials(String username, String password){
-        try {
+    public String CheckCredentials(String username, String password){
             User user = new UserTemplate().getUserByUsername(username);
-            if(user.getPassword()==password) {
-                return true;
-            } else return false;
-        } catch (NullPointerException e) {
-            return false;
-        }
+            if(user.getPassword().equals(password)) {
+                return "true";
+            } else return "Username or password is not correct";
 
-    }
+        }
 
     public boolean CreateNewUser(String username, String password, String email, String country){
         try {

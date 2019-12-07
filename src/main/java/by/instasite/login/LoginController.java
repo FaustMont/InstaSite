@@ -2,6 +2,7 @@ package by.instasite.login;
 
 import by.instasite.database.Authorization;
 import by.instasite.database.user.User;
+import by.instasite.database.user.UserTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,10 +20,12 @@ public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String LoginSubmit(@ModelAttribute User login, Model model) {
         model.addAttribute("login", login);
-        if (!new Authorization().CheckCredentials(login.getUsername(), login.getPassword())) {
-            model.addAttribute("error","Password or username is not correct");
+        //String answer = new Authorization().CheckCredentials(login.getUsername(), login.getPassword());
+        String answer = new UserTemplate().getDataSouse();
+        if (!answer.equals("true")) {
+            model.addAttribute("error",answer);
             return "login";
-        } else return "mainpage";
+        } else  return "mainpage";
     }
     @RequestMapping(value = "/register",method = RequestMethod.GET)
     public String Registration (Model model){
